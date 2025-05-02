@@ -22,7 +22,7 @@ const storage = multer.diskStorage({
 const upload = multer({ storage });
 
 // Your HubSpot OAuth API token (provided by you)
-const HUBSPOT_API_TOKEN = 'pat-na1-eacd4885-4dc9-4756-827a-d22bc25d97c4';
+const HUBSPOT_API_TOKEN = 'pat-na1-eacd4885-4dc9-4756-827a-d22bc25d97';
 
 app.use(cors());
 app.use(express.static(__dirname));

@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Upload CSV to HubSpot</title>
+</head>
+<body>
+  <h1>Upload a CSV File</h1>
+  <form id="uploadForm">
+    <input type="file" name="csvFile" accept=".csv" required />
+    <button type="submit">Upload</button>
+  </form>
+  <pre id="output"></pre>
+
+  <script>
+    const form = document.getElementById('uploadForm');
+    form.onsubmit = async (e) => {
+      e.preventDefault();
+      const formData = new FormData(form);
+      
+      try {
+        const response = await fetch('http://localhost:3000/upload', {
+          method: 'POST',
+          body: formData,
+        });
+        const result = await response.json();
+        document.getElementById('output').innerText = JSON.stringify(result, null, 2);
+      } catch (error) {
+        console.error(error);
+        document.getElementById('output').innerText = 'Error uploading file!';
+      }
+    };
+  </script>
+</body>
+</html>
